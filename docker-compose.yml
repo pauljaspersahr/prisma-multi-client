@@ -10,3 +10,15 @@ services:
       - ./user-data:/var/lib/postgresql/data
     ports:
       - "5433:5433"
+
+  pg-products:
+    image: postgres
+    container_name: pg-products
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    volumes:
+      - ./products-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"

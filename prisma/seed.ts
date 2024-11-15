@@ -1,4 +1,4 @@
-import prisma_client from "./prisma.client";
+import { user_prisma_client, product_prisma_client } from "./prisma.client";
 
 async function main() {
   const users = [
@@ -14,10 +14,30 @@ async function main() {
   ];
 
   for (const userData of users) {
-    await prisma_client.user.upsert({
+    await user_prisma_client.user.upsert({
       where: { email: userData.email },
       update: {},
       create: userData,
+    });
+  }
+
+  const products = [
+    {
+      name: "Product A",
+    },
+    {
+      name: "Product B",
+    },
+    {
+      name: "Product C",
+    },
+  ];
+
+  for (const productData of products) {
+    await product_prisma_client.product.upsert({
+      where: { name: productData.name },
+      update: {},
+      create: productData,
     });
   }
 
@@ -30,5 +50,6 @@ main()
     process.exit(1);
   })
   .finally(async () => {
-    await prisma_client.$disconnect();
+    await user_prisma_client.$disconnect();
+    await product_prisma_client.$disconnect();
   });
