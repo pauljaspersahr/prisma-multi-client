@@ -7,6 +7,6 @@ services:
       POSTGRES_PASSWORD: mypassword
       POSTGRES_DB: mydatabase
     volumes:
-      - ./app-data:/var/lib/postgresql/data
+      - ./user-data:/var/lib/postgresql/data
     ports:
       - "5433:5433"
