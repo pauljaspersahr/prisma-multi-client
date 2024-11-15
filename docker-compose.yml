@@ -1,7 +1,7 @@
 services:
-  pg-app:
+  pg-users:
     image: postgres
-    container_name: pg-app
+    container_name: pg-users
     environment:
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
